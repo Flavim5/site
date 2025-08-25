@@ -9,9 +9,11 @@
 }
 
 body {
-    font-size: 1rem;
-    font-family: 'Montserrat';
+  background-color: #0d0d0d; /* fundo escuro */
+  color: #ffffff; /* texto branco */
+  font-family: 'Press Start 2P', monospace; /* fonte estilo pixel */
 }
+
 
 header {
     background-color: #ffffff;
