@@ -1,4 +1,4 @@
-# 🌟 Site Acessível sobre Undertale
+# 🌟 Site Acessível sobre Undertale.
 
 ## 🎮 Sobre o Projeto
 Este site é uma homenagem ao jogo *Undertale*, criado por Toby Fox. Ele apresenta os personagens, rotas e história do jogo com foco em acessibilidade e design retrô inspirado no estilo visual do game.
