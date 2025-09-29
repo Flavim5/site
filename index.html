@@ -1,67 +1,233 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!doctype html>
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Undertale - Site Acessível</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/scrollreveal"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Undertale Fan Hub</title>
+  <meta name="description" content="O melhor site de Undertale do universo. Lore, personagens, OST, AUs e fanart em um só lugar." />
+  <meta property="og:title" content="Undertale Fan Hub" />
+  <meta property="og:description" content="O melhor site de Undertale do universo. Conteúdo de fã com créditos aos criadores." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="assets/favicon.ico" />
+  <style>
+    :root{
+      --bg:#0b0b0f; --card:#0f1720; --muted:#9aa6b2; --accent:#ffcc00;
+      --max-width:1100px; font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; background:linear-gradient(180deg,#05060a 0%, #0b0b0f 100%); color:#e6eef6;
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
+    .container{max-width:var(--max-width);margin:0 auto;padding:24px;}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:48px;height:48px;border-radius:8px;background:linear-gradient(135deg,#ffd166,#ff9f1c);display:flex;align-items:center;justify-content:center;font-weight:700;color:#081126}
+    nav ul{display:flex;gap:12px;list-style:none;margin:0;padding:0}
+    a{color:inherit;text-decoration:none}
+    a.button{background:var(--accent);color:#081126;padding:8px 12px;border-radius:8px;font-weight:600}
+    main{padding-top:24px}
+    .hero{display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:center}
+    .hero .lead{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent); padding:28px;border-radius:12px}
+    h1{margin:0 0 8px 0;font-size:28px}
+    p.lead{color:var(--muted);margin:0;font-size:15px}
+    .card{background:var(--card);padding:18px;border-radius:10px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:18px}
+    .character{display:flex;gap:12px;align-items:center}
+    .avatar{width:64px;height:64px;border-radius:8px;background:#0b1220;flex-shrink:0;display:grid;place-items:center;color:var(--muted)}
+    footer{margin-top:32px;padding:18px 0;color:var(--muted);font-size:13px;border-top:1px solid rgba(255,255,255,0.03)}
+    /* Responsive */
+    @media (max-width:880px){
+      .hero{grid-template-columns:1fr;gap:14px}
+      .hero-right{order:2}
+    }
+    /* Simple fade-in */
+    .reveal{opacity:0;transform:translateY(8px);animation:reveal 700ms ease forwards}
+    @keyframes reveal{to{opacity:1;transform:none}}
+    /* Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+    .thumb{width:100%;height:100px;background:#071426;border-radius:8px;display:block;object-fit:cover}
+    /* Audio */
+    audio{width:100%;outline:none;margin-top:8px;background:transparent}
+    /* Accessibility focus */
+    a:focus,button:focus{outline:3px solid rgba(255,204,0,0.2);outline-offset:3px}
+  </style>
 </head>
 <body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true">UF</div>
+        <div>
+          <div style="font-weight:700">Undertale Fan Hub</div>
+          <div style="font-size:12px;color:var(--muted)">Site de fã não oficial</div>
+        </div>
+      </div>
+      <nav aria-label="Navegação principal">
+        <ul>
+          <li><a href="#home">Início</a></li>
+          <li><a href="#lore">Lore</a></li>
+          <li><a href="#characters">Personagens</a></li>
+          <li><a href="#ost">OST</a></li>
+          <li><a href="#aus">AUs</a></li>
+          <li><a href="#gallery">Fanart</a></li>
+          <li><a class="button" href="#credits">Créditos</a></li>
+        </ul>
+      </nav>
+    </header>
 
-  <!-- Menu de acessibilidade -->
-  <div id="menu-acessibilidade">
-    <button id="botao-acessibilidade" aria-expanded="false" aria-controls="opcoes-acessibilidade">♿ Acessibilidade</button>
-    <div id="opcoes-acessibilidade" class="lista-acessibilidade">
-      <button id="aumentar-fonte">A+</button>
-      <button id="diminuir-fonte">A-</button>
-      <button id="alterna-contraste">Contraste</button>
-    </div>
+    <main id="home">
+      <section class="hero">
+        <div class="hero-left reveal" style="animation-delay:80ms">
+          <div class="card">
+            <h1>Bem-vindo ao Undertale Fan Hub</h1>
+            <p class="lead">Um compêndio visual e interativo das histórias, personagens, trilha sonora e criações de fãs inspiradas por Undertale. Tudo organizado para fãs e novas descobertas.</p>
+            <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+              <a href="#characters" class="button">Explorar Personagens</a>
+              <a href="#ost" style="padding:8px 12px;background:transparent;border:1px solid rgba(255,255,255,0.04);border-radius:8px">Ouvir OST</a>
+            </div>
+          </div>
+
+          <section id="lore" style="margin-top:18px" class="reveal" aria-labelledby="lore-title">
+            <div class="card">
+              <h2 id="lore-title" style="margin-top:0">Lore</h2>
+              <p style="color:var(--muted);margin:6px 0 0 0">Resumo da história, linhas temporais e escolhas que moldam finais e personagens. Use links internos para expandir cada tópico e incluir citações com fontes quando necessário.</p>
+              <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+                <a href="#lore-peace" style="color:var(--accent)">Final Pacifista</a>
+                <a href="#lore-neutral" style="color:var(--accent)">Final Neutro</a>
+                <a href="#lore-genocide" style="color:var(--accent)">Final Genocida</a>
+              </div>
+            </div>
+          </section>
+
+          <section id="aus" style="margin-top:16px" class="reveal" aria-labelledby="aus-title">
+            <div class="card">
+              <h2 id="aus-title" style="margin-top:0">AUs</h2>
+              <p style="color:var(--muted);margin:6px 0 0 0">Coleção de universos alternativos criados pela comunidade com descrições, links para fanfics e galerias.</p>
+            </div>
+          </section>
+        </div>
+
+        <aside class="hero-right reveal" style="animation-delay:140ms">
+          <div class="card">
+            <h3 style="margin:0 0 8px 0">Destaques</h3>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <div style="display:flex;gap:10px;align-items:center">
+                <div style="width:48px;height:48px;border-radius:8px;background:#061226;display:grid;place-items:center;color:var(--muted)">♫</div>
+                <div>
+                  <div style="font-weight:600">Trilha sonora em destaque</div>
+                  <div style="font-size:13px;color:var(--muted)">Undertale - Determination (fan remix)</div>
+                </div>
+              </div>
+              <div>
+                <label for="audio1" style="font-size:13px;color:var(--muted)">Ouvir amostra</label>
+                <audio id="audio1" controls preload="none">
+                  <source src="assets/audio/sample.mp3" type="audio/mpeg">
+                  Seu navegador não suporta o elemento de áudio.
+                </audio>
+              </div>
+            </div>
+          </div>
+
+          <div style="height:16px"></div>
+
+          <div class="card" aria-hidden="false">
+            <h3 style="margin:0 0 8px 0">Ficha rápida</h3>
+            <div style="color:var(--muted);font-size:14px">
+              <div><strong>Tipo</strong> Fan site não oficial</div>
+              <div><strong>Tema</strong> Lore; Personagens; OST; AUs; Fanart</div>
+              <div><strong>Performance</strong> Assets otimizados; Lazy load</div>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section id="characters" style="margin-top:28px" class="reveal" aria-labelledby="characters-title">
+        <h2 id="characters-title">Personagens</h2>
+        <div class="grid" style="margin-top:12px">
+          <article class="card character" role="article" aria-label="Sans">
+            <div class="avatar" aria-hidden="true">S</div>
+            <div>
+              <div style="font-weight:700">Sans</div>
+              <div style="color:var(--muted);font-size:13px">O esqueleto descontraído que guarda segredos e tem diálogos memoráveis.</div>
+            </div>
+          </article>
+
+          <article class="card character" role="article" aria-label="Toriel">
+            <div class="avatar" aria-hidden="true">T</div>
+            <div>
+              <div style="font-weight:700">Toriel</div>
+              <div style="color:var(--muted);font-size:13px">A figura maternal que protege o protagonista nos primeiros estágios do jogo.</div>
+            </div>
+          </article>
+
+          <article class="card character" role="article" aria-label="Frisk">
+            <div class="avatar" aria-hidden="true">F</div>
+            <div>
+              <div style="font-weight:700">Frisk</div>
+              <div style="color:var(--muted);font-size:13px">O protagonista silencioso cuja jornada muda conforme suas escolhas.</div>
+            </div>
+          </article>
+
+          <article class="card character" role="article" aria-label="Flowey">
+            <div class="avatar" aria-hidden="true">Fø</div>
+            <div>
+              <div style="font-weight:700">Flowey</div>
+              <div style="color:var(--muted);font-size:13px">Uma presença manipuladora que distorce as regras do mundo.</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="ost" style="margin-top:28px" class="reveal" aria-labelledby="ost-title">
+        <h2 id="ost-title">OST</h2>
+        <div class="card" style="margin-top:12px">
+          <p style="color:var(--muted);margin:0 0 10px 0">Lista de faixas e players integrados. Não hospede conteúdo protegido sem permissão; adicione previews ou links para plataformas oficiais quando possível.</p>
+          <ol style="margin:0;padding-left:18px;color:var(--muted)">
+            <li>Once Upon a Time</li>
+            <li>Undertale</li>
+            <li>Determination</li>
+            <li>Megalovania</li>
+          </ol>
+        </div>
+      </section>
+
+      <section id="gallery" style="margin-top:28px" class="reveal" aria-labelledby="gallery-title">
+        <h2 id="gallery-title">Galeria de Fanart</h2>
+        <div class="card" style="margin-top:12px">
+          <p style="color:var(--muted);margin:0 0 10px 0">Galeria com imagens otimizadas e lazy loading. Credite sempre os artistas.</p>
+          <div class="gallery">
+            <img class="thumb" loading="lazy" alt="Fanart 1" src="assets/images/fanart1.jpg" />
+            <img class="thumb" loading="lazy" alt="Fanart 2" src="assets/images/fanart2.jpg" />
+            <img class="thumb" loading="lazy" alt="Fanart 3" src="assets/images/fanart3.jpg" />
+            <img class="thumb" loading="lazy" alt="Fanart 4" src="assets/images/fanart4.jpg" />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="credits" class="reveal" style="animation-delay:200ms">
+      <div>
+        <strong>Undertale Fan Hub</strong> — site de fã não oficial. Todo o conteúdo oficial pertence a seus respectivos autores; materiais utilizados aqui são para fins de fã e ilustrativos. Caso seja detentor de direitos e deseje contato, envie solicitação para contato@seudominio.com.
+      </div>
+      <div style="margin-top:10px;color:var(--muted)">
+        <strong>Créditos</strong> Assets de fãs; trilha sonora e imagens devem ter permissão para uso. Use este template como base e substitua os assets por conteúdo próprio ou autorizado.
+      </div>
+    </footer>
   </div>
 
-  <!-- Início -->
-  <section id="inicio">
-    <h1 tabindex="0">Bem-vindo ao mundo de Undertale</h1>
-    <img src="img/logo-undertale.png" alt="Logo do jogo Undertale">
-    <p tabindex="0">Explore as rotas, conheça os personagens e mergulhe na história.</p>
-  </section>
-
-  <!-- Sobre o jogo -->
-  <section id="sobre-jogo">
-    <h2 tabindex="0">Sobre o jogo</h2>
-    <p tabindex="0">Undertale é um RPG criado por Toby Fox, onde suas escolhas definem o destino dos personagens. Você pode lutar... ou mostrar compaixão.</p>
-  </section>
-
-  <!-- Personagens -->
-  <section id="personagens">
-    <h2 tabindex="0">Personagens</h2>
-    <div class="card">
-      <img src="img/sans.png" alt="Sans, personagem esqueleto com jaqueta azul">
-      <p tabindex="0">Sans é um esqueleto sarcástico que adora piadas ruins e ketchup.</p>
-    </div>
-    <div class="card">
-      <img src="img/toriel.png" alt="Toriel, personagem com aparência de cabra maternal">
-      <p tabindex="0">Toriel é gentil e protetora, guiando o jogador no início da jornada.</p>
-    </div>
-    <!-- Adicione mais personagens -->
-  </section>
-
-  <!-- Rotas -->
-  <section id="rotas">
-    <h2 tabindex="0">Rotas do jogo</h2>
-    <ul>
-      <li tabindex="0"><strong>Pacifista:</strong> Não mate ninguém. Construa amizades.</li>
-      <li tabindex="0"><strong>Neutra:</strong> Suas escolhas variam. O final é imprevisível.</li>
-      <li tabindex="0"><strong>Genocida:</strong> Elimine todos. Enfrente consequências sombrias.</li>
-    </ul>
-  </section>
-
-  <!-- Rodapé -->
-  <footer>
-    <p tabindex="0">Site criado com foco em acessibilidade e homenagem ao universo de Undertale.</p>
-  </footer>
-
-  <script src="script.js"></script>
+  <script>
+    // Small JS for smooth in-page navigation and reveal on load
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const target = document.querySelector(a.getAttribute('href'));
+        if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth', block:'start'}); }
+      });
+    });
+    window.addEventListener('load', ()=>document.querySelectorAll('.reveal').forEach((el,i)=>el.style.animationDelay=(i*80)+'ms'));
+  </script>
 </body>
 </html>
+
